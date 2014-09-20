@@ -1,0 +1,28 @@
+{
+  "name": "html2canvas-proxy",
+  "version": "0.0.1",
+  "description": "Cross-origin content proxy for html2canvas",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niklasvh/html2canvas-proxy-nodejs.git"
+  },
+  "keywords": [
+    "html2canvas",
+    "proxy"
+  ],
+  "author": "Niklas von Hertzen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niklasvh/html2canvas-proxy-nodejs/issues"
+  },
+  "homepage": "https://github.com/niklasvh/html2canvas-proxy-nodejs",
+  "dependencies": {
+    "cors": "^2.4.2",
+    "express": "^4.9.3",
+    "request": "^2.44.0"
+  }
+}
