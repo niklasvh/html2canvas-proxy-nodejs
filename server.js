@@ -25,7 +25,7 @@ module.exports = function() {
                 if (error) {
                     return next(error);
                 }
-                res.jsonp(new Buffer(body).toString('base64'));
+                res.jsonp({content: new Buffer(body).toString('base64')});
             });
         } else {
             req.pipe(request(req.query.url).on('error', next)).pipe(res);
