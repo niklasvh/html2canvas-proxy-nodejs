@@ -1,12 +1,14 @@
 var express = require('express');
 var url = require('url');
 var cors = require('cors');
+var qs = require('qs');
 var request = require('request');
 
 module.exports = function() {
     var app = express.Router();
 
     function validUrl(req, res, next) {
+        req.query = req.query || qs.parse(url.parse(req.url).query);
         if (req.query.url == null) {
             next(new Error("No url specified"));
         } else if (typeof(req.query.url) !== "string" || url.parse(req.query.url).host === null) {

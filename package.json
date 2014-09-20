@@ -1,6 +1,6 @@
 {
   "name": "html2canvas-proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cross-origin content proxy for html2canvas",
   "main": "server.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "cors": "^2.4.2",
     "express": "^4.9.3",
+    "qs": "^2.2.4",
     "request": "^2.44.0"
   }
 }
