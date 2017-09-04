@@ -2,7 +2,7 @@ html2canvas-proxy
 =================
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/niklasvh/html2canvas?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
-[![Build Status](https://travis-ci.org/niklasvh/html2canvas-proxy.png)](https://travis-ci.org/niklasvh/html2canvas-proxy)
+[![Build Status](https://travis-ci.org/niklasvh/html2canvas-proxy-nodejs.png)](https://travis-ci.org/niklasvh/html2canvas-proxy-nodejs)
 [![NPM Downloads](https://img.shields.io/npm/dm/html2canvas-proxy.svg)](https://www.npmjs.org/package/html2canvas-proxy)
 [![NPM Version](https://img.shields.io/npm/v/html2canvas-proxy.svg)](https://www.npmjs.org/package/html2canvas-proxy)
 
