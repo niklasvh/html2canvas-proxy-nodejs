@@ -7,3 +7,12 @@ before_install:
   - npm i express
 script:
   - npm test
+deploy:
+  provider: npm
+  email: niklasvh@gmail.com
+  api_key:
+    secure: PvsSbjQuT+tnWKAjvCfAQ8bfpB9Yv65/k28UZZcu4h0vH4qb/QWO807jXJru8TXN45QvPjVzeGMgQdhsk7LGqBndq6ooorhOSRymk96zLWHaha/jDlKmBH7g47jgtB6GlAsaHnv2bSUsEshYsWkNFLn12/+vSKUZR1/vm46CnoI=
+  on:
+    tags: true
+    branch: master
+    repo: niklasvh/html2canvas-proxy-nodejs
