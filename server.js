@@ -1,36 +1,40 @@
-var express = require('express');
-var url = require('url');
-var cors = require('cors');
-var qs = require('qs');
-var request = require('request');
+const express = require('express');
+const url = require('url');
+const cors = require('cors');
+const request = require('request');
 
-module.exports = function() {
-    var app = express.Router();
-
-    function validUrl(req, res, next) {
-        req.query = req.query || qs.parse(url.parse(req.url).query);
-        if (req.query.url == null) {
-            next(new Error("No url specified"));
-        } else if (typeof(req.query.url) !== "string" || url.parse(req.query.url).host === null) {
-            next(new Error("Invalid url specified: " + req.query.url))
-        } else {
-            next();
-        }
+function validUrl(req, res, next) {
+    if (!req.query.url) {
+        next(new Error('No url specified'));
+    } else if (typeof req.query.url !== 'string' || url.parse(req.query.url).host === null) {
+        next(new Error(`Invalid url specified: ${req.query.url}`));
+    } else {
+        next();
     }
+}
 
-    app.use(cors());
-    app.get('/', validUrl, function(req, res, next) {
-        if (typeof(req.query.callback) === "string") {
-            request({url: req.query.url, encoding: 'binary'}, function(error, response, body) {
-                if (error) {
-                    return next(error);
-                }
-                res.jsonp({content: new Buffer(body, 'binary').toString('base64'), type: response.headers['content-type']});
-            });
-        } else {
-            req.pipe(request(req.query.url).on('error', next)).pipe(res);
-        }
+module.exports = () => {
+    const app = express.Router();
+    app.get('/', cors(), validUrl, (req, res, next) => {
+        switch (req.query.responseType) {
+    case 'blob':
+        req.pipe(request(req.query.url).on('error', next)).pipe(res);
+        break;
+    case 'text':
+    default:
+        request({url: req.query.url, encoding: 'binary'}, (error, response, body) => {
+            if (error) {
+                return next(error);
+            }
+            res.send(
+            `data:${response.headers['content-type']};base64,${Buffer.from(
+                body,
+                'binary'
+            ).toString('base64')}`
+        );
     });
+    }
+});
 
     return app;
 };
