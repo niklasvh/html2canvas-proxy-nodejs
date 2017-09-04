@@ -23,5 +23,8 @@
   "dependencies": {
     "cors": "2.8.4",
     "request": "2.81.0"
+  },
+  "peerDependencies": {
+    "express": "4.x"
   }
 }
