@@ -23,4 +23,6 @@ For html2canvas >=v1.0.0 use >= v1.0.0 of this library.
 
     var app = express();
     app.use('/', proxy());
+    
+    #### Thank You #####
 
