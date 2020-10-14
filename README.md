@@ -24,3 +24,20 @@ For html2canvas >=v1.0.0 use >= v1.0.0 of this library.
     var app = express();
     app.use('/', proxy());
 
+#### Usage ####
+
+In HTML2Canvas do not use these configuration options (or set them to false):
+* allowTaint
+* useCors
+
+You should use this HTML2Canvas option:
+* proxy: '/'
+
+('/' should be replaced with whatever url you used as your proxy url - see Example above)
+
+#### Testing ####
+
+You can check if your proxy is set up correctly like this:
+* http://localhost/?url=https://yoururl.here
+
+You should replace http://localhost/ with your own.
